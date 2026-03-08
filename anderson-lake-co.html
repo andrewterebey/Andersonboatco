@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anderson Lake Co. — Lake Washington Boat Rentals</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #111820;
+  --deep: #1b3a4b;
+  --lake: #2e7fa5;
+  --mist: #e8eff4;
+  --cream: #f7f4f0;
+  --gold: #b5965a;
+  --text: #3d4f5c;
+  --subtle: #8a9ba6;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 5vw; transition: background 0.4s, border-color 0.4s;
+}
+nav.scrolled { background: rgba(247,244,240,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(17,24,32,0.08); }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); transition: color 0.4s; }
+nav.scrolled .logo { color: var(--ink); }
+.logo-dot { color: var(--gold); }
+nav ul { list-style: none; display: flex; align-items: center; gap: 2.8rem; }
+nav a { text-decoration: none; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; color: rgba(247,244,240,0.75); transition: color 0.3s; }
+nav.scrolled a { color: var(--text); }
+nav a:hover { color: var(--gold) !important; }
+.nav-cta { background: var(--gold) !important; color: var(--cream) !important; padding: 0.55rem 1.4rem; letter-spacing: 0.15em; }
+nav.scrolled .nav-cta { color: var(--cream) !important; }
+.nav-cta:hover { background: #9e7e45 !important; }
+
+/* HERO */
+#hero {
+  height: 100vh; min-height: 640px;
+  background: linear-gradient(175deg, var(--deep) 0%, #0e2535 55%, #0a1e2e 100%);
+  display: flex; align-items: flex-end; padding: 0 5vw 8vh; position: relative; overflow: hidden;
+}
+.hero-grid { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(46,127,165,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(46,127,165,0.04) 1px, transparent 1px); background-size: 80px 80px; }
+.hero-glow { position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(46,127,165,0.15) 0%, transparent 70%); pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+.hero-tag { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; font-weight: 500; }
+.hero-tag::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 7vw, 6.5rem); font-weight: 300; line-height: 1.0; color: #fff; letter-spacing: -0.01em; margin-bottom: 2.5rem; }
+h1 em { font-style: italic; color: rgba(255,255,255,0.5); }
+.hero-meta { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; font-weight: 300; }
+.hero-stat-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 0.1rem; }
+.hero-div { width: 1px; height: 36px; background: rgba(255,255,255,0.12); }
+.hero-book { display: inline-flex; align-items: center; gap: 0.8rem; background: var(--gold); color: #fff; text-decoration: none; padding: 1rem 2rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; transition: background 0.25s, gap 0.25s; margin-left: auto; }
+.hero-book:hover { background: #9e7e45; gap: 1.2rem; }
+
+/* SECTIONS */
+.section { padding: 8rem 5vw; }
+.section-alt { background: var(--mist); }
+.section-dark { background: var(--deep); }
+
+.eyebrow { display: inline-flex; align-items: center; gap: 0.7rem; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; font-weight: 500; }
+.eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--gold); display: block; }
+h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; }
+.lead { font-size: 1rem; color: var(--text); line-height: 1.85; max-width: 500px; margin-top: 1.2rem; font-weight: 300; }
+
+/* ABOUT */
+#about .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.about-photo { width: 100%; aspect-ratio: 5/4; background: url('images/boatview.jpg') center/cover; position: relative; overflow: hidden; }
+.photo-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 6rem; opacity: 0.12; }
+.photo-label { position: absolute; bottom: 1.5rem; left: 1.5rem; background: rgba(17,24,32,0.7); backdrop-filter: blur(6px); color: rgba(255,255,255,0.8); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 1rem; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+.stat { padding-top: 1.2rem; border-top: 1px solid rgba(17,24,32,0.1); }
+.stat-n { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--deep); }
+.stat-l { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtle); margin-top: 0.15rem; }
+
+/* BOAT */
+#boat .inner { display: grid; grid-template-columns: 5fr 4fr; gap: 5rem; align-items: start; }
+.boat-photo { width: 100%; aspect-ratio: 16/10; background: url('images/boat.jpg') center/cover; position: relative; overflow: hidden; margin-bottom: 2rem; }
+.boat-photo-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 5rem; opacity: 0.15; }
+.detail-list { margin-top: 2rem; }
+.detail-item { display: flex; justify-content: space-between; align-items: baseline; padding: 0.9rem 0; border-bottom: 1px solid rgba(17,24,32,0.07); font-size: 0.86rem; }
+.detail-item:first-child { border-top: 1px solid rgba(17,24,32,0.07); }
+.detail-key { color: var(--subtle); }
+.detail-val { font-weight: 500; color: var(--ink); }
+
+.includes-box { background: var(--cream); border: 1px solid rgba(17,24,32,0.1); padding: 2rem; margin-top: 2rem; }
+.includes-box h4 { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; font-weight: 500; }
+.inc-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.inc-list li { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.86rem; color: var(--text); line-height: 1.5; }
+.inc-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+.price-block { margin-top: 2.5rem; }
+.price-row { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.3rem; }
+.price-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--deep); }
+.price-note { font-size: 0.8rem; color: var(--subtle); }
+.price-peak { font-size: 0.82rem; color: var(--text); margin-bottom: 1.5rem; }
+.price-peak span { color: var(--gold); font-weight: 500; }
+
+.book-btn { display: inline-flex; align-items: center; gap: 0.8rem; background: var(--ink); color: #fff; padding: 1rem 2.2rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; text-decoration: none; transition: background 0.25s, gap 0.25s; }
+.book-btn:hover { background: var(--deep); gap: 1.1rem; }
+
+/* RULES */
+.rules-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 4rem; border: 1px solid rgba(255,255,255,0.08); }
+.rule-card { padding: 2.2rem; border-right: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.rule-card:nth-child(3n) { border-right: none; }
+.rule-icon { font-size: 1.4rem; margin-bottom: 1rem; }
+.rule-title { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; font-weight: 500; }
+.rule-text { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
+
+/* REVIEWS */
+#reviews .rev-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-bottom: 4rem; }
+.rating-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: var(--deep); line-height: 1; }
+.rating-stars { color: var(--gold); font-size: 1rem; letter-spacing: 0.08em; }
+.pbadges { display: flex; gap: 0.8rem; }
+.pbadge { border: 1px solid rgba(17,24,32,0.13); padding: 0.5rem 1.2rem; font-size: 0.73rem; letter-spacing: 0.08em; color: var(--text); }
+.pbadge span { color: var(--gold); font-weight: 500; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: rgba(17,24,32,0.08); }
+.review-card { background: var(--cream); padding: 2.5rem; transition: background 0.25s; }
+.review-card:hover { background: #fff; }
+.rev-stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+.rev-q { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; font-style: italic; color: var(--deep); line-height: 1.5; margin-bottom: 1rem; }
+.rev-body { font-size: 0.85rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem; }
+.reviewer { display: flex; align-items: center; gap: 0.8rem; }
+.rev-av { width: 34px; height: 34px; border-radius: 50%; background: var(--deep); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 500; flex-shrink: 0; }
+.rev-name { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+.rev-src { font-size: 0.7rem; color: var(--subtle); }
+
+/* BOOKING */
+#booking .inner { display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start; }
+.cal-wrap { background: #fff; border: 1px solid rgba(17,24,32,0.1); }
+.cal-top { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; border-bottom: 1px solid rgba(17,24,32,0.07); }
+.cal-month-lbl { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; }
+.cal-arrows { display: flex; gap: 0.3rem; }
+.cal-arr { width: 30px; height: 30px; background: var(--mist); border: none; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.cal-arr:hover { background: var(--gold); color: #fff; }
+.cal-body { padding: 1.4rem 1.8rem; }
+.day-heads { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); margin-bottom: 0.8rem; }
+.day-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 3px; }
+.day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; cursor: pointer; transition: all 0.15s; position: relative; }
+.day:hover:not(.off):not(.taken) { background: var(--mist); }
+.day.off { color: rgba(17,24,32,0.18); cursor: default; }
+.day.today { background: var(--deep); color: #fff; font-weight: 500; }
+.day.sel { background: var(--gold); color: #fff; }
+.day.bs { background: #daeef7; color: #1a5f7a; }
+.day.bs::after { content: 'B'; position: absolute; bottom: 2px; right: 3px; font-size: 0.48rem; opacity: 0.55; }
+.day.gmb { background: #fef3dc; color: #8a6020; }
+.day.gmb::after { content: 'G'; position: absolute; bottom: 2px; right: 3px; font-size: 0.48rem; opacity: 0.55; }
+.day.taken { background: rgba(17,24,32,0.04); color: rgba(17,24,32,0.22); cursor: not-allowed; }
+.cal-legend { display: flex; gap: 1.5rem; flex-wrap: wrap; padding: 1.1rem 1.8rem; border-top: 1px solid rgba(17,24,32,0.07); }
+.leg { display: flex; align-items: center; gap: 0.4rem; font-size: 0.68rem; color: var(--subtle); }
+.leg-dot { width: 10px; height: 10px; }
+.cal-note { margin-top: 1.2rem; padding: 1rem 1.2rem; background: var(--mist); border-left: 2px solid var(--gold); font-size: 0.77rem; color: var(--text); line-height: 1.7; }
+
+.book-panel { position: sticky; top: 7rem; }
+.book-panel-inner { background: var(--deep); padding: 2.5rem; }
+.book-panel h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; margin-bottom: 0.5rem; color: #fff; }
+.book-panel .bp-sub { color: rgba(255,255,255,0.5); font-size: 0.84rem; line-height: 1.7; margin-bottom: 2rem; font-weight: 300; }
+.plat-btn { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.4rem; margin-bottom: 0.7rem; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.04); }
+.plat-btn:hover { background: rgba(255,255,255,0.09); border-color: var(--gold); }
+.plat-icon { font-size: 1.5rem; flex-shrink: 0; }
+.plat-name { font-weight: 500; font-size: 0.88rem; color: #fff; display: block; }
+.plat-sub { font-size: 0.7rem; color: rgba(255,255,255,0.38); margin-top: 0.15rem; }
+.plat-arrow { margin-left: auto; color: rgba(255,255,255,0.25); font-size: 0.9rem; transition: color 0.2s; }
+.plat-btn:hover .plat-arrow { color: var(--gold); }
+.sync-note { margin-top: 1.4rem; padding: 1.1rem; border: 1px solid rgba(181,150,90,0.25); font-size: 0.77rem; color: rgba(255,255,255,0.45); line-height: 1.75; }
+.sync-note strong { color: var(--gold); }
+.pricing-summary { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.07); }
+.pricing-summary h4 { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+.price-line { display: flex; justify-content: space-between; font-size: 0.81rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.55); }
+.price-line span:last-child { color: rgba(255,255,255,0.82); font-weight: 500; }
+.price-line.hi span:last-child { color: var(--gold); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 3rem 5vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 400; }
+footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); letter-spacing: 0.05em; }
+
+@media (max-width: 900px) {
+  #about .inner, #boat .inner, #booking .inner { grid-template-columns: 1fr; gap: 3rem; }
+  .rules-grid { grid-template-columns: 1fr; border: none; }
+  .rule-card { border: 1px solid rgba(255,255,255,0.08); border-bottom: none; }
+  .rule-card:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .book-panel { position: static; }
+  .hero-book { margin-left: 0; margin-top: 1rem; }
+  nav ul { gap: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo">Anderson Lake<span class="logo-dot">.</span> Co</div>
+  <ul>
+    <li><a href="#boat">The Boat</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Lake Washington · Seattle · Season 2026</div>
+    <h1>Private Rentals<br>on <em>Lake Washington</em></h1>
+    <div class="hero-meta">
+      <div class="hero-div"></div>
+      <div>
+        <div class="hero-stat-num">12</div>
+        <div class="hero-stat-label">Guest Capacity</div>
+      </div>
+      <div class="hero-div"></div>
+      <div>
+        <div class="hero-stat-num">Apr – Sep</div>
+        <div class="hero-stat-label">Season</div>
+      </div>
+      <a href="#booking" class="hero-book">Check Availability →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="inner">
+    <div class="about-photo">
+      <div class="photo-label">Lake Washington · Seattle, WA</div>
+    </div>
+    <div>
+      <div class="eyebrow">About Us</div>
+      <h2>A Summer,<br>Done Properly.</h2>
+      <p class="lead">Anderson Lake Co. is a lean, owner-operated boat rental running April through September on Lake Washington — one of the Pacific Northwest's most spectacular recreational waterways. No big marina overhead. Just a well-kept boat, a smooth process, and a genuinely great day on the water.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-n">★ 5.0</div><div class="stat-l">Host Rating</div></div>
+        <div class="stat"><div class="stat-n">3–4 hr</div><div class="stat-l">Minimum Rental</div></div>
+        <div class="stat"><div class="stat-n">$1M</div><div class="stat-l">Per-Trip Insurance</div></div>
+        <div class="stat"><div class="stat-n">10</div><div class="stat-l">Guest Capacity</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOAT -->
+<section class="section section-alt" id="boat">
+  <div class="inner">
+    <div>
+      <div class="boat-photo"></div>
+      <div class="eyebrow">Rates & Details</div>
+      <div class="detail-list">
+        <div class="detail-item"><span class="detail-key">Weekday minimum</span><span class="detail-val">3 hours</span></div>
+        <div class="detail-item"><span class="detail-key">Weekend minimum</span><span class="detail-val">4 hours</span></div>
+        <div class="detail-item"><span class="detail-key">Security deposit</span><span class="detail-val">$500 refundable</span></div>
+        <div class="detail-item"><span class="detail-key">Guest capacity</span><span class="detail-val">Up to 12 guests</span></div>
+        <div class="detail-item"><span class="detail-key">To operate</span><span class="detail-val">WA State Boater Card required</span></div>
+        <div class="detail-item"><span class="detail-key">Fuel policy</span><span class="detail-val">Return full or $100 fee</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">What's Included</div>
+      <h2>Everything Ready<br>When You Arrive.</h2>
+      <div class="includes-box">
+        <h4>Every Rental Includes</h4>
+        <ul class="inc-list">
+          <li>Towels for all guests</li>
+          <li>USCG-approved life jackets</li>
+          <li>Tube and wakeboards</li>
+          <li>Local sightseeing guide (Bill Gates' compound, T-Rex house &amp; more)</li>
+          <li>Personal walkthrough before departure</li>
+          <li>Signed liability waiver on file</li>
+          <li>$1,000,000 per-trip insurance via Boatsetter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section class="section section-dark" id="rules">
+  <div class="eyebrow">Guest Policies</div>
+  <h2 style="color:#fff;">Simple Rules.<br>Safe on the Water.</h2>
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-icon">📋</div>
+      <div class="rule-title">Boater Card Required</div>
+      <p class="rule-text">All renters must present a valid Washington State Boater Education Card before departure. No exceptions.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">⛽</div>
+      <div class="rule-title">Return Full of Fuel</div>
+      <p class="rule-text">The boat must come back with a full tank. Failure to refuel results in a $100 charge plus the cost of fuel.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">👟</div>
+      <div class="rule-title">No Shoes On Board</div>
+      <p class="rule-text">Shoes are removed at boarding to protect the deck. A clean boat means a better experience for everyone.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🔒</div>
+      <div class="rule-title">$500 Security Deposit</div>
+      <p class="rule-text">A refundable $500 deposit is held at booking for damage, staining, or policy violations.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">⚖️</div>
+      <div class="rule-title">Liability Waiver</div>
+      <p class="rule-text">All renters sign a waiver prior to departure. Damage or loss during the rental period is the renter's responsibility.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">⛵</div>
+      <div class="rule-title">No Tying to Other Boats</div>
+      <p class="rule-text">For safety and damage prevention, you may not tie the vessel to other boats during your rental.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews">
+  <div class="rev-header">
+    <div>
+      <div class="eyebrow">Guest Reviews</div>
+      <h2>What People Are Saying.</h2>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.8rem;">
+        <div class="rating-num">5.0</div>
+        <div>
+          <div class="rating-stars">★★★★★</div>
+          <div style="font-size:0.7rem;color:var(--subtle);margin-top:0.2rem;">Across all platforms</div>
+        </div>
+      </div>
+      <div class="pbadges">
+        <div class="pbadge">Boatsetter <span>★ 5.0</span></div>
+        <div class="pbadge">GetMyBoat <span>★ 5.0</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"An absolutely perfect day on the lake."</p>
+      <p class="rev-body">The boat was spotless, the whole process was seamless, and the owner met us personally before we headed out. Already planning our next trip — this is the best way to spend a summer day in Seattle.</p>
+      <div class="reviewer"><div class="rev-av">JM</div><div><div class="rev-name">Jamie M.</div><div class="rev-src">Boatsetter · Summer 2026</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"Our bachelorette party couldn't have been better."</p>
+      <p class="rev-body">Eight of us on the boat and plenty of room. The wakeboards and tube were a huge hit. Booking was easy, the owner was so helpful, and the local sightseeing guide was a fun surprise.</p>
+      <div class="reviewer"><div class="rev-av">SR</div><div><div class="rev-name">Sara R.</div><div class="rev-src">GetMyBoat · Summer 2026</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-q">"Best Sunday I've had all summer."</p>
+      <p class="rev-body">Lake Washington is gorgeous and Anderson Lake Co. made every part of the day effortless. The boat was exactly as listed, the walkthrough was reassuring, and we'll definitely be back.</p>
+      <div class="reviewer"><div class="rev-av">DK</div><div><div class="rev-name">Derek K.</div><div class="rev-src">Boatsetter · Summer 2026</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="section section-alt" id="booking">
+  <div class="eyebrow">Availability &amp; Booking</div>
+  <h2 style="margin-bottom:3rem;">Check Dates &amp;<br>Reserve Your Spot.</h2>
+  <div class="inner">
+    <div>
+      <div class="cal-wrap">
+        <div class="cal-top">
+          <div class="cal-month-lbl">July 2026</div>
+          <div class="cal-arrows">
+            <button class="cal-arr">‹</button>
+            <button class="cal-arr">›</button>
+          </div>
+        </div>
+        <div class="cal-body">
+          <div class="day-heads"><div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div></div>
+          <div class="day-grid">
+            <div class="day off"></div><div class="day">1</div><div class="day bs">2</div><div class="day bs">3</div><div class="day">4</div><div class="day gmb">5</div><div class="day gmb">6</div>
+            <div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day taken">10</div><div class="day taken">11</div><div class="day">12</div><div class="day gmb">13</div>
+            <div class="day">14</div><div class="day today">15</div><div class="day">16</div><div class="day">17</div><div class="day bs">18</div><div class="day bs">19</div><div class="day">20</div>
+            <div class="day">21</div><div class="day">22</div><div class="day gmb">23</div><div class="day">24</div><div class="day">25</div><div class="day taken">26</div><div class="day taken">27</div>
+            <div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div><div class="day off"></div><div class="day off"></div><div class="day off"></div>
+          </div>
+        </div>
+        <div class="cal-legend">
+          <div class="leg"><div class="leg-dot" style="background:#daeef7;border:1px solid #2e7fa5;"></div> Boatsetter (B)</div>
+          <div class="leg"><div class="leg-dot" style="background:#fef3dc;border:1px solid #c8920a;"></div> GetMyBoat (G)</div>
+          <div class="leg"><div class="leg-dot" style="background:rgba(17,24,32,0.07);"></div> Unavailable</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--gold);"></div> Selected</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-panel">
+      <div class="book-panel-inner">
+        <h3>Ready to Book?</h3>
+        <p class="bp-sub">Listed on two platforms — both stay in sync so there are never double-bookings. Choose whichever works best for you.</p>
+        <a href="#" class="plat-btn">
+          <div class="plat-icon">⚓</div>
+          <div><span class="plat-name">Book on Boatsetter</span><span class="plat-sub">$1M liability insurance included · Reviews verified</span></div>
+          <span class="plat-arrow">→</span>
+        </a>
+        <a href="#" class="plat-btn">
+          <div class="plat-icon">🚤</div>
+          <div><span class="plat-name">Book on GetMyBoat</span><span class="plat-sub">Flexible rentals · Easy cancellation</span></div>
+          <span class="plat-arrow">→</span>
+        </a>
+        <div class="sync-note"><strong>Calendars are synced.</strong> Boatsetter and GetMyBoat share the same availability — if a date shows open here, it's open everywhere.</div>
+        <div class="pricing-summary">
+          <div class="price-line"><span>Security deposit</span><span>$500 refundable</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Anderson Lake Co.</div>
+  <p>Lake Washington · Seattle, WA · April – September 2026</p>
+  <p>© 2026 Anderson Lake Co.</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+  document.querySelectorAll('.day:not(.off):not(.taken):not(.bs):not(.gmb)').forEach(d => {
+    d.addEventListener('click', () => {
+      document.querySelectorAll('.day.sel').forEach(x => x.classList.remove('sel'));
+      d.classList.add('sel');
+    });
+  });
+</script>
+</body>
+</html>
