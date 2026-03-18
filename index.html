@@ -131,7 +131,11 @@ h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6
 .rev-src { font-size: 0.7rem; color: var(--subtle); }
 
 /* BOOKING */
+<<<<<<< HEAD
 #booking .inner { display: flex; justify-content: center; }
+=======
+#booking .inner { display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start; }
+>>>>>>> 2907404d1ea6c41b6ffe40b1484e28c3d8f4d834
 .cal-wrap { background: #fff; border: 1px solid rgba(17,24,32,0.1); }
 .cal-top { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; border-bottom: 1px solid rgba(17,24,32,0.07); }
 .cal-month-lbl { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; }
@@ -366,11 +370,46 @@ footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); letter-spacing: 0.
   <div class="eyebrow">Availability &amp; Booking</div>
   <h2 style="margin-bottom:3rem;">Check Dates &amp;<br>Reserve Your Spot.</h2>
   <div class="inner">
+<<<<<<< HEAD
+=======
+    <div>
+      <div class="cal-wrap">
+        <div class="cal-top">
+          <div class="cal-month-lbl">July 2026</div>
+          <div class="cal-arrows">
+            <button class="cal-arr">‹</button>
+            <button class="cal-arr">›</button>
+          </div>
+        </div>
+        <div class="cal-body">
+          <div class="day-heads"><div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div></div>
+          <div class="day-grid">
+            <div class="day off"></div><div class="day">1</div><div class="day bs">2</div><div class="day bs">3</div><div class="day">4</div><div class="day gmb">5</div><div class="day gmb">6</div>
+            <div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day taken">10</div><div class="day taken">11</div><div class="day">12</div><div class="day gmb">13</div>
+            <div class="day">14</div><div class="day today">15</div><div class="day">16</div><div class="day">17</div><div class="day bs">18</div><div class="day bs">19</div><div class="day">20</div>
+            <div class="day">21</div><div class="day">22</div><div class="day gmb">23</div><div class="day">24</div><div class="day">25</div><div class="day taken">26</div><div class="day taken">27</div>
+            <div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div><div class="day off"></div><div class="day off"></div><div class="day off"></div>
+          </div>
+        </div>
+        <div class="cal-legend">
+          <div class="leg"><div class="leg-dot" style="background:#daeef7;border:1px solid #2e7fa5;"></div> Boatsetter (B)</div>
+          <div class="leg"><div class="leg-dot" style="background:#fef3dc;border:1px solid #c8920a;"></div> GetMyBoat (G)</div>
+          <div class="leg"><div class="leg-dot" style="background:rgba(17,24,32,0.07);"></div> Unavailable</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--gold);"></div> Selected</div>
+        </div>
+      </div>
+    </div>
+
+>>>>>>> 2907404d1ea6c41b6ffe40b1484e28c3d8f4d834
     <div class="book-panel">
       <div class="book-panel-inner">
         <h3>Ready to Book?</h3>
         <p class="bp-sub">Listed on two platforms — both stay in sync so there are never double-bookings. Choose whichever works best for you.</p>
+<<<<<<< HEAD
         <a href="https://www.boatsetter.com/boats/mmfhmhk?start_period=2026-03-21" target="_blank" rel="noopener noreferrer" class="plat-btn">
+=======
+        <a href="#" class="plat-btn">
+>>>>>>> 2907404d1ea6c41b6ffe40b1484e28c3d8f4d834
           <div class="plat-icon">⚓</div>
           <div><span class="plat-name">Book on Boatsetter</span><span class="plat-sub">$1M liability insurance included · Reviews verified</span></div>
           <span class="plat-arrow">→</span>
@@ -380,7 +419,11 @@ footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); letter-spacing: 0.
           <div><span class="plat-name">Book on GetMyBoat</span><span class="plat-sub">Flexible rentals · Easy cancellation</span></div>
           <span class="plat-arrow">→</span>
         </a>
+<<<<<<< HEAD
         <div class="sync-note"><strong>Calendars are synced.</strong> Boatsetter and GetMyBoat share the same availability.</div>
+=======
+        <div class="sync-note"><strong>Calendars are synced.</strong> Boatsetter and GetMyBoat share the same availability — if a date shows open here, it's open everywhere.</div>
+>>>>>>> 2907404d1ea6c41b6ffe40b1484e28c3d8f4d834
         <div class="pricing-summary">
           <div class="price-line"><span>Security deposit</span><span>$500 refundable</span></div>
         </div>
