@@ -131,34 +131,7 @@ h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6
 .rev-src { font-size: 0.7rem; color: var(--subtle); }
 
 /* BOOKING */
-<<<<<<< HEAD
 #booking .inner { display: flex; justify-content: center; }
-=======
-#booking .inner { display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: start; }
->>>>>>> 2907404d1ea6c41b6ffe40b1484e28c3d8f4d834
-.cal-wrap { background: #fff; border: 1px solid rgba(17,24,32,0.1); }
-.cal-top { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.8rem; border-bottom: 1px solid rgba(17,24,32,0.07); }
-.cal-month-lbl { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; }
-.cal-arrows { display: flex; gap: 0.3rem; }
-.cal-arr { width: 30px; height: 30px; background: var(--mist); border: none; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-.cal-arr:hover { background: var(--gold); color: #fff; }
-.cal-body { padding: 1.4rem 1.8rem; }
-.day-heads { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); margin-bottom: 0.8rem; }
-.day-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 3px; }
-.day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; cursor: pointer; transition: all 0.15s; position: relative; }
-.day:hover:not(.off):not(.taken) { background: var(--mist); }
-.day.off { color: rgba(17,24,32,0.18); cursor: default; }
-.day.today { background: var(--deep); color: #fff; font-weight: 500; }
-.day.sel { background: var(--gold); color: #fff; }
-.day.bs { background: #daeef7; color: #1a5f7a; }
-.day.bs::after { content: 'B'; position: absolute; bottom: 2px; right: 3px; font-size: 0.48rem; opacity: 0.55; }
-.day.gmb { background: #fef3dc; color: #8a6020; }
-.day.gmb::after { content: 'G'; position: absolute; bottom: 2px; right: 3px; font-size: 0.48rem; opacity: 0.55; }
-.day.taken { background: rgba(17,24,32,0.04); color: rgba(17,24,32,0.22); cursor: not-allowed; }
-.cal-legend { display: flex; gap: 1.5rem; flex-wrap: wrap; padding: 1.1rem 1.8rem; border-top: 1px solid rgba(17,24,32,0.07); }
-.leg { display: flex; align-items: center; gap: 0.4rem; font-size: 0.68rem; color: var(--subtle); }
-.leg-dot { width: 10px; height: 10px; }
-.cal-note { margin-top: 1.2rem; padding: 1rem 1.2rem; background: var(--mist); border-left: 2px solid var(--gold); font-size: 0.77rem; color: var(--text); line-height: 1.7; }
 
 .book-panel { position: sticky; top: 7rem; }
 .book-panel-inner { background: var(--deep); padding: 2.5rem; }
@@ -185,7 +158,7 @@ footer { background: var(--ink); padding: 3rem 5vw; display: flex; align-items: 
 footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); letter-spacing: 0.05em; }
 
 @media (max-width: 900px) {
-  #about .inner, #boat .inner, #booking .inner { grid-template-columns: 1fr; gap: 3rem; }
+  #about .inner, #boat .inner { grid-template-columns: 1fr; gap: 3rem; }
   .rules-grid { grid-template-columns: 1fr; border: none; }
   .rule-card { border: 1px solid rgba(255,255,255,0.08); border-bottom: none; }
   .rule-card:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -370,46 +343,11 @@ footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); letter-spacing: 0.
   <div class="eyebrow">Availability &amp; Booking</div>
   <h2 style="margin-bottom:3rem;">Check Dates &amp;<br>Reserve Your Spot.</h2>
   <div class="inner">
-<<<<<<< HEAD
-=======
-    <div>
-      <div class="cal-wrap">
-        <div class="cal-top">
-          <div class="cal-month-lbl">July 2026</div>
-          <div class="cal-arrows">
-            <button class="cal-arr">‹</button>
-            <button class="cal-arr">›</button>
-          </div>
-        </div>
-        <div class="cal-body">
-          <div class="day-heads"><div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div></div>
-          <div class="day-grid">
-            <div class="day off"></div><div class="day">1</div><div class="day bs">2</div><div class="day bs">3</div><div class="day">4</div><div class="day gmb">5</div><div class="day gmb">6</div>
-            <div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day taken">10</div><div class="day taken">11</div><div class="day">12</div><div class="day gmb">13</div>
-            <div class="day">14</div><div class="day today">15</div><div class="day">16</div><div class="day">17</div><div class="day bs">18</div><div class="day bs">19</div><div class="day">20</div>
-            <div class="day">21</div><div class="day">22</div><div class="day gmb">23</div><div class="day">24</div><div class="day">25</div><div class="day taken">26</div><div class="day taken">27</div>
-            <div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div><div class="day off"></div><div class="day off"></div><div class="day off"></div>
-          </div>
-        </div>
-        <div class="cal-legend">
-          <div class="leg"><div class="leg-dot" style="background:#daeef7;border:1px solid #2e7fa5;"></div> Boatsetter (B)</div>
-          <div class="leg"><div class="leg-dot" style="background:#fef3dc;border:1px solid #c8920a;"></div> GetMyBoat (G)</div>
-          <div class="leg"><div class="leg-dot" style="background:rgba(17,24,32,0.07);"></div> Unavailable</div>
-          <div class="leg"><div class="leg-dot" style="background:var(--gold);"></div> Selected</div>
-        </div>
-      </div>
-    </div>
-
->>>>>>> 2907404d1ea6c41b6ffe40b1484e28c3d8f4d834
     <div class="book-panel">
       <div class="book-panel-inner">
         <h3>Ready to Book?</h3>
         <p class="bp-sub">Listed on two platforms — both stay in sync so there are never double-bookings. Choose whichever works best for you.</p>
-<<<<<<< HEAD
         <a href="https://www.boatsetter.com/boats/mmfhmhk?start_period=2026-03-21" target="_blank" rel="noopener noreferrer" class="plat-btn">
-=======
-        <a href="#" class="plat-btn">
->>>>>>> 2907404d1ea6c41b6ffe40b1484e28c3d8f4d834
           <div class="plat-icon">⚓</div>
           <div><span class="plat-name">Book on Boatsetter</span><span class="plat-sub">$1M liability insurance included · Reviews verified</span></div>
           <span class="plat-arrow">→</span>
@@ -419,11 +357,7 @@ footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); letter-spacing: 0.
           <div><span class="plat-name">Book on GetMyBoat</span><span class="plat-sub">Flexible rentals · Easy cancellation</span></div>
           <span class="plat-arrow">→</span>
         </a>
-<<<<<<< HEAD
         <div class="sync-note"><strong>Calendars are synced.</strong> Boatsetter and GetMyBoat share the same availability.</div>
-=======
-        <div class="sync-note"><strong>Calendars are synced.</strong> Boatsetter and GetMyBoat share the same availability — if a date shows open here, it's open everywhere.</div>
->>>>>>> 2907404d1ea6c41b6ffe40b1484e28c3d8f4d834
         <div class="pricing-summary">
           <div class="price-line"><span>Security deposit</span><span>$500 refundable</span></div>
         </div>
@@ -441,12 +375,6 @@ footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); letter-spacing: 0.
 <script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
-  document.querySelectorAll('.day:not(.off):not(.taken):not(.bs):not(.gmb)').forEach(d => {
-    d.addEventListener('click', () => {
-      document.querySelectorAll('.day.sel').forEach(x => x.classList.remove('sel'));
-      d.classList.add('sel');
-    });
-  });
 </script>
 </body>
 </html>
