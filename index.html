@@ -41,7 +41,7 @@ nav.scrolled .nav-cta { color: var(--cream) !important; }
 /* HERO */
 #hero {
   height: 100vh; min-height: 640px;
-  background: linear-gradient(175deg, var(--deep) 0%, #0e2535 55%, #0a1e2e 100%);
+  background: linear-gradient(175deg, rgba(27,58,75,0.7) 0%, rgba(14,37,53,0.75) 55%, rgba(10,30,46,0.8) 100%), url('images/fistbump.jpeg') center/cover no-repeat;
   display: flex; align-items: flex-end; padding: 0 5vw 8vh; position: relative; overflow: hidden;
 }
 .hero-grid { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(46,127,165,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(46,127,165,0.04) 1px, transparent 1px); background-size: 80px 80px; }
@@ -70,7 +70,7 @@ h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6
 
 /* ABOUT */
 #about .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-.about-photo { width: 100%; aspect-ratio: 5/4; background: url('images/boatview.jpg') center/cover; position: relative; overflow: hidden; }
+.about-photo { width: 100%; aspect-ratio: 5/4; background: url('images/swimming.jpeg') center/cover; position: relative; overflow: hidden; }
 .photo-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 6rem; opacity: 0.12; }
 .photo-label { position: absolute; bottom: 1.5rem; left: 1.5rem; background: rgba(17,24,32,0.7); backdrop-filter: blur(6px); color: rgba(255,255,255,0.8); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.5rem 1rem; }
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
@@ -80,7 +80,7 @@ h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.6
 
 /* BOAT */
 #boat .inner { display: grid; grid-template-columns: 5fr 4fr; gap: 5rem; align-items: start; }
-.boat-photo { width: 100%; aspect-ratio: 16/10; background: url('images/boat.jpg') center/cover; position: relative; overflow: hidden; margin-bottom: 2rem; }
+.boat-photo { width: 100%; aspect-ratio: 16/15; background: url('images/boat.PNG') center/cover; position: relative; overflow: hidden; margin-bottom: 2rem; }
 .boat-photo-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 5rem; opacity: 0.15; }
 .detail-list { margin-top: 2rem; }
 .detail-item { display: flex; justify-content: space-between; align-items: baseline; padding: 0.9rem 0; border-bottom: 1px solid rgba(17,24,32,0.07); font-size: 0.86rem; }
@@ -171,6 +171,7 @@ footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); letter-spacing: 0.
   nav ul li:not(:last-child) { display: none; }
   nav ul { gap: 0; }
   .nav-cta { white-space: nowrap; }
+  nav { justify-content: space-between; gap: 1rem; }
 }
 </style>
 </head>
